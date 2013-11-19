@@ -37,14 +37,16 @@ namespace ncdf
 
         public void Output()
         {
+            int sx = Console.CursorLeft;
+            int sy = Console.CursorTop;
             Console.ForegroundColor = forecolor;
             Console.BackgroundColor = backcolor;
             int[] xy = GetXY();
-            Console.CursorTop = xy[1];
-            Console.CursorLeft = xy[0];
+            Console.SetCursorPosition(xy[0], xy[1]);
             Console.Write(ascii);
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.BackgroundColor = ConsoleColor.Black;
+            Console.SetCursorPosition(sx, sy);
         }
 
         public void SetChar(char c)
@@ -159,7 +161,7 @@ namespace ncdf
 
         public static tile get(int n)
         {
-            if (n > 0 && n < tileArray.Length)
+            if (n >= 0 && n < tileArray.Length)
             {
                 return tileArray[n];
             }
