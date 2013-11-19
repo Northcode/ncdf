@@ -14,9 +14,7 @@ namespace ncdf
             int width = Convert.ToInt32(Console.ReadLine());
             Console.Write("Height (max. 70): ");
             int height = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Number of islands: ");
-            int islands = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Island size (rec. 15-20): ");
+            Console.Write("Terrain scale (1-100): ");
             int islandsize = Convert.ToInt32(Console.ReadLine());
 
             tiles.width = width;
@@ -26,19 +24,17 @@ namespace ncdf
             Console.BufferHeight = height + 5;
             Console.WindowHeight = height + 1;
 
+            randGen = new Random(DateTime.Now.Millisecond);
+
             while (true)
             {
                 tiles.init();
-                randGen = new Random(DateTime.Now.Millisecond);
+                Generator.xoffset = randGen.Next(0, 500);
+                Generator.yoffset = randGen.Next(0, 500);
                 Generator.FillWater();
-                for (int i = 0; i < islands; i++)
-                {
-                    Generator.generateGrass(islandsize);
-                }
-                for (int i = 0; i < islands; i++)
-                {
-                    Generator.generateRock(islandsize/3);
-                }
+                Generator.generateGrass(islandsize);
+                Generator.generateForest(islandsize);
+                Generator.generateRock(islandsize);
                 tiles.OutputTiles();
                 Console.ReadKey();
             }

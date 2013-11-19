@@ -11,8 +11,8 @@ namespace ncdf
         public tile_grass()
         {
             this.ascii = '░';
-            this.backcolor = ConsoleColor.DarkGreen;
-            this.forecolor = ConsoleColor.Green;
+            this.backcolor = ConsoleColor.Green;
+            this.forecolor = ConsoleColor.DarkGreen;
             this.type = 1;
         }
     }
@@ -32,10 +32,21 @@ namespace ncdf
     {
         public tile_rock()
         {
-            this.ascii = '¤';
+            this.ascii = '#';
             this.backcolor = ConsoleColor.DarkGray;
             this.forecolor = ConsoleColor.Gray;
             this.type = 3;
+        }
+    }
+
+    class tile_forest : tile
+    {
+        public tile_forest()
+        {
+            this.ascii = '░';
+            this.forecolor = ConsoleColor.Green;
+            this.backcolor = ConsoleColor.DarkGreen;
+            this.type = 4;
         }
     }
 }
