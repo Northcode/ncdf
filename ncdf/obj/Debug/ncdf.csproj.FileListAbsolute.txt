@@ -1,0 +1,6 @@
+E:\Desktop\ncdf\ncdf\bin\Debug\ncdf.exe.config
+E:\Desktop\ncdf\ncdf\bin\Debug\ncdf.exe
+E:\Desktop\ncdf\ncdf\bin\Debug\ncdf.pdb
+E:\Desktop\ncdf\ncdf\obj\Debug\ncdf.exe
+E:\Desktop\ncdf\ncdf\obj\Debug\ncdf.pdb
+E:\Desktop\ncdf\ncdf\obj\Debug\ncdf.csprojResolveAssemblyReference.cache
