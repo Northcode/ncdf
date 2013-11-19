@@ -9,6 +9,8 @@ namespace ncdf
     class tile
     {
         internal int id;
+        internal int type;
+
         internal char ascii;
         internal ConsoleColor backcolor;
         internal ConsoleColor forecolor;
@@ -18,6 +20,7 @@ namespace ncdf
             this.ascii = ' ';
             this.forecolor = ConsoleColor.Gray;
             this.backcolor = ConsoleColor.Black;
+            this.type = 0;
         }
 
         public int[] GetXY()
@@ -74,11 +77,17 @@ namespace ncdf
             if (this.GetRight() != null)
             {
                 tile t = this.GetRight();
-                t.ascii = this.ascii;
-                t.forecolor = this.forecolor;
-                t.backcolor = this.backcolor;
-                t.Spread(r, l);
+                SpreadTo(r, l, t);
             }
+        }
+
+        private void SpreadTo(Random r, int l, tile t)
+        {
+            t.ascii = this.ascii;
+            t.forecolor = this.forecolor;
+            t.backcolor = this.backcolor;
+            t.type = this.type;
+            t.Spread(r, l);
         }
 
         public void SpreadLeft(Random r, int l)
@@ -86,10 +95,7 @@ namespace ncdf
             if (this.GetLeft() != null)
             {
                 tile t = this.GetLeft();
-                t.ascii = this.ascii;
-                t.forecolor = this.forecolor;
-                t.backcolor = this.backcolor;
-                t.Spread(r, l);
+                SpreadTo(r, l, t);
             }
         }
 
@@ -98,10 +104,7 @@ namespace ncdf
             if (this.GetAbove() != null)
             {
                 tile t = this.GetAbove();
-                t.ascii = this.ascii;
-                t.forecolor = this.forecolor;
-                t.backcolor = this.backcolor;
-                t.Spread(r, l);
+                SpreadTo(r, l, t);
             }
         }
 
@@ -110,10 +113,7 @@ namespace ncdf
             if (this.GetBelow() != null)
             {
                 tile t = this.GetBelow();
-                t.ascii = this.ascii;
-                t.forecolor = this.forecolor;
-                t.backcolor = this.backcolor;
-                t.Spread(r, l);
+                SpreadTo(r, l, t);
             }
         }
 

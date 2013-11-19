@@ -22,5 +22,19 @@ namespace ncdf
             tiles.set(prg.randGen.Next(0, tiles.width), prg.randGen.Next(0, tiles.height), t);
             t.Spread(prg.randGen, size);
         }
+
+        public static void generateRock(int size)
+        {
+            tile t = new tile_rock();
+            int x = prg.randGen.Next(0,tiles.width);
+            int y = prg.randGen.Next(0,tiles.height);
+            while (tiles.get(x,y).type != 1)
+            {
+                x = prg.randGen.Next(0, tiles.width);
+                y = prg.randGen.Next(0, tiles.height);
+            }
+            tiles.set(x, y, t);
+            t.Spread(prg.randGen, size);
+        }
     }
 }
