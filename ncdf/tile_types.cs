@@ -10,7 +10,8 @@ namespace ncdf
     {
         public tile_grass()
         {
-            this.ascii = '░';
+            //this.ascii = '░';
+            this.ascii = ' ';
             this.backcolor = ConsoleColor.Green;
             this.forecolor = ConsoleColor.DarkGreen;
             this.type = 1;
@@ -43,10 +44,21 @@ namespace ncdf
     {
         public tile_forest()
         {
-            this.ascii = '░';
+            this.ascii = 'ÿ';
             this.forecolor = ConsoleColor.Green;
             this.backcolor = ConsoleColor.DarkGreen;
             this.type = 4;
+        }
+    }
+
+    class tile_wood : tile
+    {
+        public tile_wood()
+        {
+            this.ascii = '-';
+            this.backcolor = ConsoleColor.DarkRed;
+            this.forecolor = ConsoleColor.DarkYellow;
+            this.type = 5;
         }
     }
 }

@@ -11,9 +11,13 @@ namespace ncdf
         internal int id;
         internal int type;
 
+        internal int x, y;
+
         internal char ascii;
         internal ConsoleColor backcolor;
         internal ConsoleColor forecolor;
+
+        public static int[] walkableTiles = { 1, 4, 5 };
 
         public tile()
         {
@@ -25,8 +29,8 @@ namespace ncdf
 
         public int[] GetXY()
         {
-            int y = 0;
-            int x = 0;
+            y = 0;
+            x = 0;
             while (id - (y * tiles.width - 1) > tiles.width)
             {
                 y++;
@@ -146,6 +150,14 @@ namespace ncdf
                 }
             }
         }
+
+        public bool IsWalkAble
+        {
+            get
+            {
+                return Array.Exists(walkableTiles, (x) => x == type);
+            }
+        }
     }
 
     static class tiles
@@ -153,6 +165,14 @@ namespace ncdf
         static tile[] tileArray;
         public static int width = 40;
         public static int height = 20;
+
+        public static int Length
+        {
+            get
+            {
+                return tileArray.Length;
+            }
+        }
 
         public static tile get(int x, int y)
         {

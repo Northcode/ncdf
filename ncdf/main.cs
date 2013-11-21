@@ -19,6 +19,8 @@ namespace ncdf
 
             tiles.width = width;
             tiles.height = height;
+            Enteties.width = width;
+            Enteties.height = height;
             Console.BufferWidth = width + 5;
             Console.WindowWidth = width + 1;
             Console.BufferHeight = height + 5;
@@ -44,6 +46,8 @@ namespace ncdf
                 run = (key.Key == ConsoleKey.D1);
             }
 
+            Enteties.init();
+
             Player p = new Player();
 
             int n = 0;
@@ -58,33 +62,50 @@ namespace ncdf
             }
 
             tile t = tiles.get(n);
-            int x = t.GetXY()[0], y = t.GetXY()[1];
-            p.SetPos(x,y);
-            p.SetLastPos(x,y);
+            t.GetXY();
+            p.SetLastPos(t.x,t.y);
+            Enteties.set(t.x, t.y, p);
+
+            n = randGen.Next(0,tiles.Length);
+            b = true;
+            while (b)
+            {
+                if (tiles.get(n) != null)
+                {
+                    b = tiles.get(n).type != 1;
+                    n++;
+                }
+            }
+
+            Wolf w = new Wolf();
+            t = tiles.get(n);
+            t.GetXY();
+            w.SetLastPos(t.x,t.y);
+            Enteties.set(t.x, t.y, w);
 
             run = true;
             tiles.OutputTiles();
             while (run)
             {
-                p.Output();
+                Enteties.OutputEnteties();
                 Console.SetCursorPosition(0, height);
                 Console.Write("wasd: move  q: exit e: buildmode (" + (p.buildmode ? "on" : "off") + ")");
                 var key = Console.ReadKey();
                 if (key.Key == ConsoleKey.W)
                 {
-                    p.Move(0);
+                    p.Move(UDirection.Up);
                 }
                 else if (key.Key == ConsoleKey.D)
                 {
-                    p.Move(1);
+                    p.Move(UDirection.Right);
                 }
                 else if (key.Key == ConsoleKey.S)
                 {
-                    p.Move(2);
+                    p.Move(UDirection.Down);
                 }
                 else if (key.Key == ConsoleKey.A)
                 {
-                    p.Move(3);
+                    p.Move(UDirection.Left);
                 }
                 else if (key.Key == ConsoleKey.E)
                 {
@@ -94,6 +115,7 @@ namespace ncdf
                 {
                     run = false;
                 }
+                w.Tick();
             }
 
             Console.ReadKey();

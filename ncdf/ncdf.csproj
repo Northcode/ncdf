@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AIUnit.cs" />
+    <Compile Include="Entity.cs" />
     <Compile Include="Generator.cs" />
     <Compile Include="main.cs" />
     <Compile Include="Noise.cs" />
@@ -49,6 +51,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tile.cs" />
     <Compile Include="tile_types.cs" />
+    <Compile Include="Unit.cs" />
+    <Compile Include="Wolf.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
