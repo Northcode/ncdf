@@ -46,6 +46,7 @@
     <Compile Include="Entity.cs" />
     <Compile Include="Generator.cs" />
     <Compile Include="main.cs" />
+    <Compile Include="MenuManager.cs" />
     <Compile Include="Noise.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
